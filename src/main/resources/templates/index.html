@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>Welcome</h1>
-
     <h2>Add a member</h2>
     <form action="/members" method="post">
         ID: <input type="text" name="id">
@@ -14,5 +13,25 @@
         Email: <input type="text" name="email">
         <button type="submit">Add member</button>
     </form>
+    <h2>Search a member</h2>
+    <form action="/search" method="get">
+        ID: <input type="text" name="id">
+        Or
+        Email: <input type="text" name="email">
+        <button type="submit">Search</button>
+    </form>
+    <table>
+        <tr>
+            <th>Member ID</th>
+            <th>Member Name</th>
+            <th>Member Email</th>
+        </tr>
+        <tr>
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.email}"></td>
+        </tr>
+    </table>
+
 </body>
 </html>
