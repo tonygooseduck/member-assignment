@@ -33,14 +33,13 @@ public class MemberController {
 
     @GetMapping("/search")
     public String findMembers(@RequestParam(required = false, defaultValue = "") String id, @RequestParam(required = false, defaultValue = "") String email, Model model) {
-        List<Member> members;
         if (email.equals("")) {
-            members = memberRepository.findById(id);
+            List<Member> membersById = memberRepository.findById(id);
+            model.addAttribute("membersById", membersById);
         } else {
-            members = memberRepository.findByEmail(email);
-            model.addAttribute("members", members);
+            List<Member> membersByMail = memberRepository.findByEmail(email);
+            model.addAttribute("membersByMail", membersByMail);
         }
-
         return "index";
     }
 }
