@@ -47,4 +47,9 @@ public class MemberRepository {
 
         return jdbcTemplate.query(sql, memberRowMapper, email);
     }
+
+    public int update(Member member) {
+        String sql = "UPDATE member SET mname = ?, email = ? WHERE mid = ?";
+        return jdbcTemplate.update(sql, member.getName(), member.getEmail(), member.getId());
+    }
 }

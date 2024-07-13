@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,6 +40,15 @@ public class MemberController {
         } else {
             List<Member> membersByMail = memberRepository.findByEmail(email);
             model.addAttribute("membersByMail", membersByMail);
+        }
+        return "index";
+    }
+
+    @PostMapping("/update")
+    public String updateMember(Member member, Model model) {
+        int rowsAffected = memberRepository.update(member);
+        if (rowsAffected == 1) {
+            model.addAttribute("memberUpdated", member);
         }
         return "index";
     }

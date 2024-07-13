@@ -36,21 +36,32 @@
         <button type="submit">Search</button>
     </form>
     <div th:if="${!#lists.isEmpty(membersById)}" th:each="member : ${membersById}">
-        <form action="/update" method="patch">
-            <div th:text="${member.id}"></div>
+        <form action="/update" method="post">
+            <div>
+                <input th:value="${member.id}" name="id">
+            </div>
             <div>
                 <label th:text="${member.name}"></label>
-                <input type="text" value="change name" name="name">
+                <input type="text" th:value="${member.name}" name="name">
             </div>
             <div>
                 <label th:text="${member.email}"></label>
-                <input type="text" value="change email" name="email">
+                <input type="text" th:value="${member.email}" name="email">
             </div>
             <button type="submit">Change</button>
         </form>
     </div>
-
-
-
+    <table th:if="${memberUpdated} != null">
+        <tr>
+            <th>Member ID</th>
+            <th>Member Name</th>
+            <th>Member Email</th>
+        </tr>
+        <tr>
+            <td th:text="${memberUpdated.id}"></td>
+            <td th:text="${memberUpdated.name}"></td>
+            <td th:text="${memberUpdated.email}"></td>
+        </tr>
+    </table>
 </body>
 </html>
