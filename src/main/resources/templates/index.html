@@ -15,8 +15,6 @@
     </form>
     <h2>Search a member</h2>
     <form action="/search" method="get">
-        ID: <input type="text" name="id">
-        Or
         Email: <input type="text" name="email">
         <button type="submit">Search</button>
     </form>
@@ -26,12 +24,24 @@
             <th>Member Name</th>
             <th>Member Email</th>
         </tr>
-        <tr th:each="member : ${members}">
-            <td th:if="${member != null}" th:text="${member.id}">Default</td>
-            <td th:if="${member != null}" th:text="${member.name}">Default</td>
-            <td th:if="${member != null}" th:text="${member.email}">Default</td>
+        <tr th:if="${#lists.isEmpty(members)}">
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>N/A</td>
+        </tr>
+        <tr th:if="${!#lists.isEmpty(members)}" th:each="member : ${members}">
+            <td th:text="${member.id}"></td>
+            <td th:text="${member.name}"></td>
+            <td th:text="${member.email}"></td>
         </tr>
     </table>
+    <h2>Search/Update a member</h2>
+    <form action="/search" method="get">
+        ID: <input type="text" name="id">
+        <button type="submit">Search</button>
+    </form>
+
+
 
 </body>
 </html>

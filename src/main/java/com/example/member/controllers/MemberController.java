@@ -38,8 +38,9 @@ public class MemberController {
             members = memberRepository.findById(id);
         } else {
             members = memberRepository.findByEmail(email);
+            model.addAttribute("members", members);
         }
-        model.addAttribute("members", members);
+
         return "index";
     }
 }
