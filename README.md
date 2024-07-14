@@ -1,9 +1,9 @@
 # *Implemented features*
-#### Adding new member
-#### Searching member by member id or member email
+#### Add new member
+#### Search member by email
+#### Search/update member name/email by id
 
 # *To-do*
-#### Updating member name, member email
 #### Deploy on GCP cloud run
 #### Integrate GCP logging
 #### Add testing
